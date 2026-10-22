@@ -1,0 +1,19 @@
+wvet
+Copyright 2026 Workloom Solutions Private Limited
+
+This repository includes the following third-party material:
+
+- CODE_OF_CONDUCT.md is adapted from the Contributor Covenant, version 2.1,
+  https://www.contributor-covenant.org/version/2/1/code_of_conduct/,
+  licensed under CC BY 4.0, https://creativecommons.org/licenses/by/4.0/.
+
+The release binaries compile in the following:
+
+- The Go standard library and runtime, BSD-3-Clause, https://go.dev,
+  third_party/licenses/go/LICENSE.
+- golang.org/x/tools v0.51.0, BSD-3-Clause, https://cs.opensource.google/go/x/tools,
+  third_party/licenses/golang.org/x/tools/LICENSE.
+- golang.org/x/mod v0.41.0, BSD-3-Clause, https://cs.opensource.google/go/x/mod,
+  third_party/licenses/golang.org/x/mod/semver/LICENSE.
+- golang.org/x/sync v0.23.0, BSD-3-Clause, https://cs.opensource.google/go/x/sync,
+  third_party/licenses/golang.org/x/sync/errgroup/LICENSE.

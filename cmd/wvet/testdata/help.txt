@@ -1,0 +1,71 @@
+wvet is a tool for static analysis of Go programs.
+
+wvet examines Go source code and reports diagnostics for
+suspicious constructs or opportunities for improvement.
+Diagnostics may include suggested fixes.
+
+An example of a suspicious construct is a Printf call whose arguments
+do not align with the format string. Analyzers may use heuristics that
+do not guarantee all reports are genuine problems, but can find
+mistakes not caught by the compiler.
+
+An example of an opportunity for improvement is a loop over
+strings.Split(doc, "\n"), which may be replaced by a loop over the
+strings.SplitSeq iterator, avoiding an array allocation.
+Diagnostics in such cases may report non-problems,
+but should carry fixes that may be safely applied.
+
+For analyzers of the first kind, use "go vet -vettool=PROGRAM"
+to run the tool and report diagnostics.
+
+For analyzers of the second kind, use "go fix -fixtool=PROGRAM"
+to run the tool and apply the fixes it suggests.
+
+Registered analyzers:
+
+    goroutinecheck reports go statements, whose goroutine ends the process if it panics without recovering
+    swallowcheck reports error values checked but never propagated, logged, or inspected (the swallowed error)
+    waitgroupcheck reports sync.WaitGroup.Wait, which blocks forever if a Done is missed
+
+By default all analyzers are run.
+To select specific analyzers, use the -NAME flag for each one,
+ or -NAME=false to run all analyzers not explicitly disabled.
+
+Core flags:
+
+  -V	print version and exit
+  -all
+    	no effect (deprecated)
+  -c int
+    	display offending line with this many lines of context (default -1)
+  -cpuprofile string
+    	write CPU profile to this file
+  -debug string
+    	debug flags, any subset of "fpstv"
+  -diff
+    	with -fix, don't update the files, but print a unified diff
+  -fix
+    	apply all suggested fixes
+  -flags
+    	print analyzer flags in JSON
+  -goroutinecheck
+    	enable "goroutinecheck" analysis
+  -json
+    	emit JSON output
+  -memprofile string
+    	write memory profile to this file
+  -source
+    	no effect (deprecated)
+  -swallowcheck
+    	enable "swallowcheck" analysis
+  -tags string
+    	no effect (deprecated)
+  -test
+    	indicates whether test files should be analyzed, too (default true)
+  -trace string
+    	write trace log to this file
+  -v	no effect (deprecated)
+  -waitgroupcheck
+    	enable "waitgroupcheck" analysis
+
+To see details and flags of a specific analyzer, run 'wvet help name'.

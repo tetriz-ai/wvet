@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="200" viewBox="0 0 880 200" role="img" aria-label="wvet: go vet checks for swallowed errors, bare goroutines and unbounded WaitGroup waits.">
+  <rect width="880" height="200" rx="16" fill="#F5F3EE"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="16">
+    <rect x="44" y="22" width="172" height="24" rx="4" fill="#1B2A24"/>
+    <text x="52" y="39" fill="#F5F3EE">v, err := load()</text>
+    <path d="M 148 50 q 3 -4 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0 t 6 0" fill="none" stroke="#C2410C" stroke-width="2"/>
+    <text x="48" y="74" font-size="14" fill="#65736C">sample.go:13:16: error checked but never propagated, logged, or inspected (swallowed)</text>
+  </g>
+  <text x="48" y="142" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-1.5" fill="#1B2A24">wvet</text>
+  <text x="48" y="176" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="18" fill="#33453D">go vet checks for swallowed errors, bare goroutines and unbounded WaitGroup waits.</text>
+</svg>

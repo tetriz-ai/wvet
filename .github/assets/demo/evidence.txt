@@ -1,0 +1,15 @@
+Captured locally on 2026-10-20 using the synthetic examples below.
+
+Reproduction commands (repository root):
+sh examples/vet-a-module/run.sh
+sh examples/fix-the-findings/run.sh
+
+Observed output:
+<scratch>/sample.go:13:16: error checked but never propagated, logged, or inspected (swallowed)
+<scratch>/sample.go:25:3: go statement: a panic in this goroutine ends the process; start it with goroutine.Run (github.com/tetriz-ai/wvet/goroutine) or github.com/sourcegraph/conc
+<scratch>/sample.go:30:2: sync.WaitGroup.Wait blocks forever if a Done is missed; use waitgroup.SafeWait (github.com/tetriz-ai/wvet/waitgroup) or github.com/sourcegraph/conc
+wvet exited with status 3
+alpha: done
+beta: recovered "beta failed"
+gamma: done
+wvet: no findings

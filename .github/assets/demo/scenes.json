@@ -1,0 +1,142 @@
+{
+  "accent": "#a25039",
+  "disclosure": "Runnable sample findings \u00b7 fixes are made by the developer or agent, never automatically by wvet",
+  "scenes": [
+    {
+      "title": "Find risky Go code before merge.",
+      "blocks": [
+        {
+          "label": "SAMPLE CODE",
+          "rows": [
+            "if err != nil {",
+            "  return errors.New(\"no value\")",
+            "}",
+            "go func() { job() }()",
+            "wg.Wait()"
+          ],
+          "box": [
+            36,
+            151,
+            488,
+            413
+          ],
+          "kind": "code",
+          "size": 21
+        },
+        {
+          "label": "WVET ./...",
+          "rows": [
+            {
+              "text": "Swallowed error",
+              "state": "bad"
+            },
+            {
+              "text": "Bare goroutine",
+              "state": "bad"
+            },
+            {
+              "text": "Unbounded WaitGroup wait",
+              "state": "bad"
+            }
+          ],
+          "box": [
+            576,
+            151,
+            488,
+            413
+          ],
+          "kind": "rows"
+        }
+      ],
+      "arrows": [
+        [
+          524,
+          350,
+          576,
+          350
+        ]
+      ]
+    },
+    {
+      "title": "Make the fixes explicit.",
+      "blocks": [
+        {
+          "label": "FIX THE CALLS",
+          "rows": [
+            "Return or wrap the cause",
+            "Use goroutine.Run",
+            "Use waitgroup.SafeWait"
+          ],
+          "box": [
+            36,
+            151,
+            488,
+            413
+          ],
+          "kind": "steps"
+        },
+        {
+          "label": "CORRECTED EXAMPLE",
+          "rows": [
+            "goroutine.Run(ctx, job,",
+            "  onPanic)",
+            "",
+            "waitgroup.SafeWait(&wg,",
+            "  5*time.Second)"
+          ],
+          "box": [
+            576,
+            151,
+            488,
+            413
+          ],
+          "kind": "code",
+          "size": 21
+        }
+      ],
+      "arrows": []
+    },
+    {
+      "title": "Recover the panic. Finish the other jobs.",
+      "blocks": [
+        {
+          "label": "RUNNABLE HELPER EXAMPLE",
+          "rows": [
+            "alpha: done",
+            "beta: recovered \"beta failed\"",
+            "gamma: done"
+          ],
+          "box": [
+            36,
+            151,
+            488,
+            413
+          ],
+          "kind": "code",
+          "size": 21
+        },
+        {
+          "label": "CHECK AGAIN",
+          "rows": [
+            {
+              "text": "wvet: no findings",
+              "state": "good"
+            },
+            "The corrected example passes",
+            "Process continues after recovery"
+          ],
+          "box": [
+            576,
+            151,
+            488,
+            413
+          ],
+          "kind": "rows"
+        }
+      ],
+      "arrows": []
+    }
+  ],
+  "name": "wvet",
+  "output": "demo.gif"
+}
