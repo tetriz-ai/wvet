@@ -8,6 +8,8 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Go version](https://img.shields.io/github/go-mod/go-version/tetriz-ai/wvet)](go.mod)
 
+<a href="https://www.producthunt.com/products/agentic-workflow-kit?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-tetriz-engineering-kit" target="_blank" rel="noopener noreferrer"><img alt="Tetriz Engineering Kit  - Open-source tools for everything around AI coding | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1296838&amp;theme=light&amp;t=1793345913841"></a>
+
 In a Go service, an error that is checked and then dropped loses its cause, a panic in any
 goroutine ends the whole process, and a missed `Done` hangs a WaitGroup wait with no error.
 wvet finds the code that allows each of these, so CI can stop it before merge.
